@@ -14,16 +14,11 @@ namespace Data_Acess_Layer.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int StudentId { get; set; }
         public string StudentName { get; set; }
+        public string StudentEmail { get; set; }
+
+        public string StudentAge { get; set; }
+
         public string GradeId { get; set; }
     }
-}
-namespace Data_Acess_Layer
-{
-	public class StudentEntity
-    {
-		public StudentEntity()
-		{
-		}
-	}
 }
 

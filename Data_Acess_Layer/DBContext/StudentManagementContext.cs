@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data_Acess_Layer.Data
+namespace Data_Acess_Layer.DBContext
 {
     public class StudentManagementContext : DbContext
     {
@@ -16,9 +16,6 @@ namespace Data_Acess_Layer.Data
         }
         public DbSet<StudentEntity> Students { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-
-        }
+        
     }
 }

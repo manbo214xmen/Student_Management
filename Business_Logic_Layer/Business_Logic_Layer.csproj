@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Data_Acess_Layer\Data_Acess_Layer.csproj" />
-    <ProjectReference Include="..\Student_Management\Student_Management.csproj" />
   </ItemGroup>
 
 </Project>
