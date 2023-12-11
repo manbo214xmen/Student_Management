@@ -1,12 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Data_Acess_Layer
-
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,12 +24,7 @@ namespace Data_Acess_Layer.Entities
         public StudentEntity()
         {
             this.Courses = new HashSet<CourseEntity>();
-        }
-
-
-        public string StudentAge { get; set; }
-
-        public string GradeId { get; set; }
+        } 
     }
 }
 

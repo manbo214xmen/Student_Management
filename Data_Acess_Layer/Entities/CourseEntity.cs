@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Data_Acess_Layer
+namespace Data_Acess_Layer.Entities
 {
 	public class CourseEntity
     {
