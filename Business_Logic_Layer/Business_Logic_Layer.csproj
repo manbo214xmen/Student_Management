@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Data_Acess_Layer\Data_Acess_Layer.csproj" />
     <ProjectReference Include="..\Student_Management\Student_Management.csproj" />
   </ItemGroup>
 

@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Business_Logic_Layer\Business_Logic_Layer.csproj" />
+    <ProjectReference Include="..\Student_Management\Student_Management.csproj" />
+  </ItemGroup>
+
 </Project>
