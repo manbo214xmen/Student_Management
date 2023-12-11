@@ -23,12 +23,12 @@ namespace Student_Management.Controllers
             return studentService.Get();
         }
 
-        [HttpGet]
-        [Route("Filter")]
-        public List<StudentDTO> Get([FromQuery] string? name, string? gradeId, string? sortType, string? sortField, int pageNumber, int pageSize)
-        {
-            return studentService.GetFilterStudent(name, gradeId, sortType, sortField, pageNumber, pageSize);
-        }
+        //[HttpGet]
+        //[Route("Filter")]
+        //public List<StudentDTO> Get([FromQuery] string? name, string? gradeId, string? sortType, string? sortField, int pageNumber, int pageSize)
+        //{
+        //    return studentService.GetFilterStudent(name, gradeId, sortType, sortField, pageNumber, pageSize);
+        //}
 
         [HttpGet("{id}")]
         public StudentDTO Get(int id)

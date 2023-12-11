@@ -1,8 +1,8 @@
 using Data_Acess_Layer.DBContext;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
-using Business_Service_Layer;
-using Data_Access_Layer;
+using Data_Acess_Layer;
+using Business_Logic_Layer.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Data_Acess_Layer
-
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
@@ -32,10 +29,7 @@ namespace Data_Acess_Layer.Entities
         }
 
 
-        public string StudentAge { get; set; }
-        public string StudentPhone { get; set; }
-
-        public string GradeId { get; set; }
+        
     }
 }
 
