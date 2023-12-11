@@ -17,3 +17,13 @@ namespace Data_Acess_Layer.Entities
         public string GradeId { get; set; }
     }
 }
+namespace Data_Acess_Layer
+{
+	public class StudentEntity
+    {
+		public StudentEntity()
+		{
+		}
+	}
+}
+
