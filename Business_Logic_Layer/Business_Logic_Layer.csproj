@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -8,7 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Student_Management\Student_Management.csproj" />
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Data_Acess_Layer\Data_Acess_Layer.csproj" />
   </ItemGroup>
 
 </Project>
