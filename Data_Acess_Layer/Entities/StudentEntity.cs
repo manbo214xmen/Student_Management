@@ -17,6 +17,7 @@ namespace Data_Acess_Layer.Entities
         public string StudentEmail { get; set; }
 
         public string StudentAge { get; set; }
+        public string StudentPhone { get; set; }
 
         public string GradeId { get; set; }
     }

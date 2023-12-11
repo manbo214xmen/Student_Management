@@ -8,7 +8,7 @@ using AutoMapper;
 using Business_Logic_Layer.DTO;
 using Data_Acess_Layer.Entities;
 
-namespace Business_Logic_Layer
+namespace Business_Logic_Layer.Services
 {
     public class StudentService
     {
