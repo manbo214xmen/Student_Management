@@ -27,9 +27,7 @@ namespace Data_Acess_Layer.Entities
         {
             this.Courses = new HashSet<CourseEntity>();
         }
-
-
-        
+  
     }
 }
 
