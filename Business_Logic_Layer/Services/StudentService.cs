@@ -8,7 +8,7 @@ using AutoMapper;
 using Business_Logic_Layer.DTO;
 using Data_Acess_Layer.Entities;
 
-namespace Business_Logic_Layer
+namespace Business_Logic_Layer.Services
 {
     public class StudentService
     {
@@ -26,12 +26,14 @@ namespace Business_Logic_Layer
 
             return mapper.Map<List<StudentDTO>>(studentRepository.Get());
         }
-        public List<StudentDTO> GetFilterStudent(string? name, string? gradeId, string? sortType, string? sortField, int pageNumber, int pageSize)
-        {
+
+        //public List<StudentDTO> GetFilterStudent(string? name, string? gradeId, string? sortType, string? sortField, int pageNumber, int pageSize)
+        //{
 
 
-            return mapper.Map<List<StudentDTO>>(studentRepository.GetFilterStudent(name, gradeId, sortType, sortField, pageNumber, pageSize));
-        }
+        //    return mapper.Map<List<StudentDTO>>(studentRepository.GetFilterStudent(name, gradeId, sortType, sortField, pageNumber, pageSize));
+        //}
+
         public StudentDTO Get(int id)
         {
 

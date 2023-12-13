@@ -1,5 +1,8 @@
 using Data_Acess_Layer.DBContext;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using Data_Acess_Layer;
+using Business_Logic_Layer.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +18,9 @@ builder.Services.AddDbContext<StudentManagementContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddScoped<StudentRepository>();
+builder.Services.AddScoped<StudentService>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 

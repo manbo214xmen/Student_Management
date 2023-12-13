@@ -21,38 +21,38 @@ namespace Data_Acess_Layer
         {
             return dbContext.Students.ToList();
         }
-        public List<StudentEntity> GetFilterStudent(string? name, string? gradeId, string? sortType, string? sortField, int pageNumber, int pageSize)
-        {
+        //public List<StudentEntity> GetFilterStudent(string? name, string? gradeId, string? sortType, string? sortField, int pageNumber, int pageSize)
+        //{
 
-            IEnumerable<StudentEntity> students = Get();
-            if (name != null)
-            {
-                students = students.Where(x => x.StudentName.Contains(name));
-            }
-            if (gradeId != null)
-            {
-                students = students.Where(x => x.GradeId.Contains(gradeId));
-            }
+        //    IEnumerable<StudentEntity> students = Get();
+        //    if (name != null)
+        //    {
+        //        students = students.Where(x => x.StudentName.Contains(name));
+        //    }
+        //    if (gradeId != null)
+        //    {
+        //        students = students.Where(x => x.CurrentGradeId.Contains(gradeId));
+        //    }
 
-            if (sortType != null)
-            {
-                if (sortField != null)
-                {
-                    char[] text = sortField.ToCharArray();
-                    text[0] = char.ToUpper(text[0]);
-                    sortField = new String(text);
-                }
-                students = sortType == "desc"
-                    ? students.OrderByDescending(s => !String.IsNullOrEmpty(sortField) ? s.GetType().GetProperty(sortField)?.GetValue(s, null) : s.StudentName)
-                    : students.OrderBy(s => !String.IsNullOrEmpty(sortField) ? s.GetType().GetProperty(sortField)?.GetValue(s, null) : s.StudentName);
-            }
-            if (pageNumber >= 1 && pageSize >= 1)
-            {
+        //    if (sortType != null)
+        //    {
+        //        if (sortField != null)
+        //        {
+        //            char[] text = sortField.ToCharArray();
+        //            text[0] = char.ToUpper(text[0]);
+        //            sortField = new String(text);
+        //        }
+        //        students = sortType == "desc"
+        //            ? students.OrderByDescending(s => !String.IsNullOrEmpty(sortField) ? s.GetType().GetProperty(sortField)?.GetValue(s, null) : s.StudentName)
+        //            : students.OrderBy(s => !String.IsNullOrEmpty(sortField) ? s.GetType().GetProperty(sortField)?.GetValue(s, null) : s.StudentName);
+        //    }
+        //    if (pageNumber >= 1 && pageSize >= 1)
+        //    {
 
-                students = PaginatedList<StudentEntity>.Create(students, pageSize, pageNumber);
-            }
-            return students.ToList();
-        }
+        //        students = PaginatedList<StudentEntity>.Create(students, pageSize, pageNumber);
+        //    }
+        //    return students.ToList();
+        //}
         public StudentEntity Get(int id)
         {
             return dbContext.Students.FirstOrDefault(x => x.StudentId.Equals(id));

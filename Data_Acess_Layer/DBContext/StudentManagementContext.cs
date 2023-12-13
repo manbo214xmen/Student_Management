@@ -18,6 +18,5 @@ namespace Data_Acess_Layer.DBContext
         public DbSet<AddressEntity> Addresses { get; set; }
         public DbSet<CourseEntity> Courses { get; set; }
         public DbSet<GradeEntity> Grades { get; set; }
-        
     }
 }
