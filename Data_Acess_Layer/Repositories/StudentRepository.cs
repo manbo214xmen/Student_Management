@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data_Acess_Layer
+namespace Data_Acess_Layer.Repositories
 {
     public class StudentRepository
     {

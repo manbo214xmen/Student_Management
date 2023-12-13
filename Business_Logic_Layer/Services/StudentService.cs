@@ -1,4 +1,4 @@
-﻿using Data_Acess_Layer;
+﻿using Data_Acess_Layer.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,19 +12,19 @@ namespace Business_Logic_Layer.Services
 {
     public class StudentService
     {
-        private readonly StudentRepository studentRepository;
-        private readonly IMapper mapper;
+        private readonly StudentRepository _studentRepository;
+        private readonly IMapper _mapper;
         public StudentService(StudentRepository studentRepository, IMapper mapper)
         {
-            this.studentRepository = studentRepository;
-            this.mapper = mapper;
+            this._studentRepository = studentRepository;
+            this._mapper = mapper;
         }
 
         public List<StudentDTO> Get()
         {
 
 
-            return mapper.Map<List<StudentDTO>>(studentRepository.Get());
+            return _mapper.Map<List<StudentDTO>>(_studentRepository.Get());
         }
 
         //public List<StudentDTO> GetFilterStudent(string? name, string? gradeId, string? sortType, string? sortField, int pageNumber, int pageSize)
@@ -38,19 +38,19 @@ namespace Business_Logic_Layer.Services
         {
 
 
-            return mapper.Map<StudentDTO>(studentRepository.Get(id));
+            return _mapper.Map<StudentDTO>(_studentRepository.Get(id));
         }
         public void Post(StudentDTO student)
         {
-            studentRepository.Post(mapper.Map<StudentEntity>(student));
+            _studentRepository.Post(_mapper.Map<StudentEntity>(student));
         }
         public bool Put(int id, StudentDTO student)
         {
-            return studentRepository.Put(id, mapper.Map<StudentEntity>(student));
+            return _studentRepository.Put(id,_mapper.Map<StudentEntity>(student));
         }
         public bool Delete(int id)
         {
-            return studentRepository.Delete(id);
+            return _studentRepository.Delete(id);
 
         }
     }

@@ -16,7 +16,9 @@ namespace Student_Management.Controllers
             this.studentService = studentService;
         }
 
-
+        /// <summary>
+        /// Get all students from database
+        /// </summary>
         [HttpGet]
         public List<StudentDTO> Get()
         {
@@ -30,6 +32,9 @@ namespace Student_Management.Controllers
         //    return studentService.GetFilterStudent(name, gradeId, sortType, sortField, pageNumber, pageSize);
         //}
 
+        /// <summary>
+        /// Get a specific student from database
+        /// </summary>
         [HttpGet("{id}")]
         public StudentDTO Get(int id)
         {
@@ -37,7 +42,9 @@ namespace Student_Management.Controllers
 
         }
 
-
+        /// <summary>
+        /// Add a new student
+        /// </summary>
         [HttpPost]
         public ActionResult Post(StudentDTO student)
         {
@@ -49,6 +56,10 @@ namespace Student_Management.Controllers
             return BadRequest();
 
         }
+
+        /// <summary>
+        /// Edit/Update a specific student from database
+        /// </summary>
         [HttpPut("{id}")]
         public ActionResult Put(int id, StudentDTO student)
         {
@@ -63,6 +74,11 @@ namespace Student_Management.Controllers
             }
             return BadRequest();
         }
+
+
+        /// <summary>
+        /// Delete a specific student from database
+        /// </summary>
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
