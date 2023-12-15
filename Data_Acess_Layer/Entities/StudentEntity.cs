@@ -22,6 +22,8 @@ namespace Data_Acess_Layer.Entities
         public int CurrentGradeId { get; set; }
         public GradeEntity CurrentGrade { get; set; }
         public virtual ICollection<CourseEntity> Courses { get; set; }
+        public virtual StudentAddressEntity Address { get; set; }
+
 
         public StudentEntity()
         {
