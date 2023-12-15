@@ -10,14 +10,14 @@ using Data_Acess_Layer.Entities;
 
 namespace Business_Logic_Layer.Services
 {
-    public class AddressService
+    public class StudentAddressService
     {
-        private readonly AddressRepository _addressRepository;
+        private readonly StudentAddressRepository _studentAddressRepository;
         private readonly IMapper _mapper;
 
-        public AddressService(AddressRepository addressRepository, IMapper mapper)
+        public StudentAddressService(StudentAddressRepository studentAddressRepository, IMapper mapper)
         {
-            this._addressRepository = addressRepository;
+            this._studentAddressRepository = studentAddressRepository;
             this._mapper = mapper;
         }
 

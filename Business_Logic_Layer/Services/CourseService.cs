@@ -22,6 +22,5 @@ namespace Business_Logic_Layer.Services
             this._mapper = mapper;
         }
 
-
     }
 }

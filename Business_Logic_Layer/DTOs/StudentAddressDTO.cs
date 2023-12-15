@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Business_Logic_Layer.DTOs
 {
-    public class AddressDTO
+    public class StudentAddressDTO
     {
-        public int AdressId { get; set; }
-        public string Address { get; set; }
+        public int StudentAdressId { get; set; }
+        public string Address1 { get; set; }
+        public string? Address2 { get; set; }
         public string City { get; set; }
         public int Zipcode { get; set; }
         public string State { get; set; }

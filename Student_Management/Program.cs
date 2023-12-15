@@ -51,8 +51,8 @@ builder.Services.AddScoped<StudentService>();
 builder.Services.AddScoped<GradeRepository>();
 builder.Services.AddScoped<GradeService>();
 
-builder.Services.AddScoped<AddressRepository>();
-builder.Services.AddScoped<AddressService>();
+builder.Services.AddScoped<StudentAddressRepository>();
+builder.Services.AddScoped<StudentAddressService>();
 
 builder.Services.AddScoped<CourseRepository>();
 builder.Services.AddScoped<CourseService>();

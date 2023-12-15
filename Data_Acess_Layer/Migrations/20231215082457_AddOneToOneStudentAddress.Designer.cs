@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data_Acess_Layer.Migrations
 {
     [DbContext(typeof(StudentManagementContext))]
-    [Migration("20231215080943_OneToOneStudentAddress")]
-    partial class OneToOneStudentAddress
+    [Migration("20231215082457_AddOneToOneStudentAddress")]
+    partial class AddOneToOneStudentAddress
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

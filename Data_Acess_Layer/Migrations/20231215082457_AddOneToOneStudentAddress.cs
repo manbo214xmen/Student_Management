@@ -4,7 +4,7 @@
 
 namespace Data_Acess_Layer.Migrations
 {
-    public partial class initDB : Migration
+    public partial class AddOneToOneStudentAddress : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,9 +12,10 @@ namespace Data_Acess_Layer.Migrations
                 name: "Addresses",
                 columns: table => new
                 {
-                    AdressId = table.Column<int>(type: "int", nullable: false)
+                    StudentAdressId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Zipcode = table.Column<int>(type: "int", nullable: false),
                     State = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -22,7 +23,7 @@ namespace Data_Acess_Layer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Addresses", x => x.AdressId);
+                    table.PrimaryKey("PK_Addresses", x => x.StudentAdressId);
                 });
 
             migrationBuilder.CreateTable(
@@ -63,11 +64,18 @@ namespace Data_Acess_Layer.Migrations
                     StudentEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StudentPhone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StudentAge = table.Column<int>(type: "int", nullable: false),
-                    CurrentGradeId = table.Column<int>(type: "int", nullable: false)
+                    CurrentGradeId = table.Column<int>(type: "int", nullable: false),
+                    AddressStudentAdressId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Students", x => x.StudentId);
+                    table.ForeignKey(
+                        name: "FK_Students_Addresses_AddressStudentAdressId",
+                        column: x => x.AddressStudentAdressId,
+                        principalTable: "Addresses",
+                        principalColumn: "StudentAdressId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Students_Grades_CurrentGradeId",
                         column: x => x.CurrentGradeId,
@@ -106,6 +114,11 @@ namespace Data_Acess_Layer.Migrations
                 column: "StudentsStudentId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Students_AddressStudentAdressId",
+                table: "Students",
+                column: "AddressStudentAdressId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Students_CurrentGradeId",
                 table: "Students",
                 column: "CurrentGradeId");
@@ -114,9 +127,6 @@ namespace Data_Acess_Layer.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Addresses");
-
-            migrationBuilder.DropTable(
                 name: "CourseEntityStudentEntity");
 
             migrationBuilder.DropTable(
@@ -124,6 +134,9 @@ namespace Data_Acess_Layer.Migrations
 
             migrationBuilder.DropTable(
                 name: "Students");
+
+            migrationBuilder.DropTable(
+                name: "Addresses");
 
             migrationBuilder.DropTable(
                 name: "Grades");

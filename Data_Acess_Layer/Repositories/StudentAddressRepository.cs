@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 
 namespace Data_Acess_Layer.Repositories
 {
-    public class AddressRepository
+    public class StudentAddressRepository
 	{
-		public AddressRepository()
+		public StudentAddressRepository()
 		{
+
 		}
 	}
 }
