@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Design;
 
 namespace Data_Acess_Layer
 {   
-    //This class if for MacOS, which does not recognize DBContext in Program.cs in Presentation Layer
+    //This class is for MacOS, which does not recognize DBContext in Program.cs in Presentation Layer
     public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<StudentManagementContext>
     {
         public StudentManagementContext CreateDbContext(string[] args)
