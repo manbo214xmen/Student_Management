@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data_Acess_Layer.Migrations
 {
     [DbContext(typeof(StudentManagementContext))]
-    [Migration("20231215082457_AddOneToOneStudentAddress")]
-    partial class AddOneToOneStudentAddress
+    [Migration("20231215085502_NewForeignKey")]
+    partial class NewForeignKey
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -95,6 +95,9 @@ namespace Data_Acess_Layer.Migrations
                     b.Property<string>("Address2")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("AddressOfStudentId")
+                        .HasColumnType("int");
+
                     b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -107,10 +110,15 @@ namespace Data_Acess_Layer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Zipcode")
                         .HasColumnType("int");
 
                     b.HasKey("StudentAdressId");
+
+                    b.HasIndex("StudentId");
 
                     b.ToTable("Addresses");
                 });
@@ -122,9 +130,6 @@ namespace Data_Acess_Layer.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentId"), 1L, 1);
-
-                    b.Property<int>("AddressStudentAdressId")
-                        .HasColumnType("int");
 
                     b.Property<int>("CurrentGradeId")
                         .HasColumnType("int");
@@ -146,8 +151,6 @@ namespace Data_Acess_Layer.Migrations
 
                     b.HasKey("StudentId");
 
-                    b.HasIndex("AddressStudentAdressId");
-
                     b.HasIndex("CurrentGradeId");
 
                     b.ToTable("Students");
@@ -168,21 +171,24 @@ namespace Data_Acess_Layer.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Data_Acess_Layer.Entities.StudentEntity", b =>
+            modelBuilder.Entity("Data_Acess_Layer.Entities.StudentAddressEntity", b =>
                 {
-                    b.HasOne("Data_Acess_Layer.Entities.StudentAddressEntity", "Address")
+                    b.HasOne("Data_Acess_Layer.Entities.StudentEntity", "Student")
                         .WithMany()
-                        .HasForeignKey("AddressStudentAdressId")
+                        .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("Data_Acess_Layer.Entities.StudentEntity", b =>
+                {
                     b.HasOne("Data_Acess_Layer.Entities.GradeEntity", "CurrentGrade")
                         .WithMany("Students")
                         .HasForeignKey("CurrentGradeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Address");
 
                     b.Navigation("CurrentGrade");
                 });

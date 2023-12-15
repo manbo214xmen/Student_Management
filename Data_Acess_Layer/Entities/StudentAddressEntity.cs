@@ -7,7 +7,6 @@ namespace Data_Acess_Layer.Entities
 	public class StudentAddressEntity
     {
 
-        [ForeignKey("StudentEntity")]
         [Key]
         public int StudentAdressId { get; set; }
         [Required]
@@ -18,7 +17,10 @@ namespace Data_Acess_Layer.Entities
         public string State { get; set; }
         public string Country { get; set; }
 
-        //public virtual StudentEntity Student { get; set; }
+        [ForeignKey("AddressOfStudentId")]
+        public int AddressOfStudentId { get; set; }
+
+        public StudentEntity Student { get; set; }
 
     }
 }
