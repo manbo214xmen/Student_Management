@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data_Acess_Layer.Migrations
 {
     [DbContext(typeof(StudentManagementContext))]
-    [Migration("20231213093035_initDB")]
+    [Migration("20231215040233_initDB")]
     partial class initDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

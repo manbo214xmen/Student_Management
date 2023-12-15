@@ -41,8 +41,8 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddDbContext<StudentManagementContext>(options =>
 {
-    options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+   options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+   options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 builder.Services.AddScoped<StudentRepository>();
