@@ -11,15 +11,15 @@ namespace Data_Acess_Layer.Repositories
     public class StudentRepository
     {
 
-        private readonly StudentManagementContext dbContext;
+        private readonly StudentManagementContext _dbContext;
 
         public StudentRepository(StudentManagementContext dbContext)
         {
-            this.dbContext = dbContext;
+            this._dbContext = dbContext;
         }
         public List<StudentEntity> Get()
         {
-            return dbContext.Students.ToList();
+            return _dbContext.Students.ToList();
         }
         //public List<StudentEntity> GetFilterStudent(string? name, string? gradeId, string? sortType, string? sortField, int pageNumber, int pageSize)
         //{
@@ -55,36 +55,36 @@ namespace Data_Acess_Layer.Repositories
         //}
         public StudentEntity Get(int id)
         {
-            return dbContext.Students.FirstOrDefault(x => x.StudentId.Equals(id));
+            return _dbContext.Students.FirstOrDefault(x => x.StudentId.Equals(id));
         }
         public void Post(StudentEntity student)
         {
-            dbContext.Students.Add(student);
-            dbContext.SaveChanges();
+            _dbContext.Students.Add(student);
+            _dbContext.SaveChanges();
         }
 
         public bool Put(int id, StudentEntity student)
         {
-            var studentUpdate = dbContext.Students.FirstOrDefault(x => x.StudentId.Equals(id));
+            var studentUpdate = _dbContext.Students.FirstOrDefault(x => x.StudentId.Equals(id));
 
             if (studentUpdate == null)
             {
                 return false;
             }
 
-            dbContext.Students.Update(student);
-            dbContext.SaveChanges();
+            _dbContext.Students.Update(student);
+            _dbContext.SaveChanges();
             return true;
         }
         public bool Delete(int id)
         {
-            var student = dbContext.Students.FirstOrDefault(x => x.StudentId.Equals(id));
+            var student = _dbContext.Students.FirstOrDefault(x => x.StudentId.Equals(id));
             if (student == null)
             {
                 return false;
             }
-            dbContext.Students.Remove(student);
-            dbContext.SaveChanges();
+            _dbContext.Students.Remove(student);
+            _dbContext.SaveChanges();
             return true;
         }
     }
