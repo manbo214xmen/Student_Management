@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Data_Acess_Layer.Entities;
 
 namespace Business_Logic_Layer.DTOs
 {
@@ -15,5 +16,9 @@ namespace Business_Logic_Layer.DTOs
         public string StudentName { get; set; }
         [NotNull]
         public string GradeId { get; set; }
+        public int StudentAge { get; set; }
+        public int CurrentGradeId { get; set; }
+        public GradeEntity CurrentGrade { get; set; }
+        public virtual ICollection<CourseEntity> Courses { get; set; }
     }
 }
