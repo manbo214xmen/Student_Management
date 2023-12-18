@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Data_Acess_Layer.Entities
 {
@@ -17,7 +18,7 @@ namespace Data_Acess_Layer.Entities
         public string State { get; set; }
         public string Country { get; set; }
 
-        [ForeignKey("StudentId")]
+        [BindNever]
         public int StudentId { get; set; }
 
         public StudentEntity Student { get; set; }

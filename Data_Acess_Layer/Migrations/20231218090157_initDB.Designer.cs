@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data_Acess_Layer.Migrations
 {
     [DbContext(typeof(StudentManagementContext))]
-    [Migration("20231218061424_RenameForeignKey")]
-    partial class RenameForeignKey
+    [Migration("20231218090157_initDB")]
+    partial class initDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

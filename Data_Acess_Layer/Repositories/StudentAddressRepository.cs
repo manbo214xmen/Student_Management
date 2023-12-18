@@ -30,6 +30,7 @@ namespace Data_Acess_Layer.Repositories
 
         public void Post(StudentAddressEntity studentAddressEntity)
         {
+
             _dbContext.Addresses.Add(studentAddressEntity);
             _dbContext.SaveChanges();
         }

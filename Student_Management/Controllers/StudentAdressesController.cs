@@ -71,7 +71,7 @@ namespace Student_Management.Controllers
             }
             try
             {
-                _studentAddressService.Post(studentAddress);
+                _studentAddressService.Put(id, studentAddress);
                 return Ok("Student adddress updated successfully");
             }
             catch (ArgumentException ex)

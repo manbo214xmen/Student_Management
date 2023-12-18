@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Data_Acess_Layer.Entities;
+using Newtonsoft.Json;
 
 namespace Business_Logic_Layer.DTOs
 {
