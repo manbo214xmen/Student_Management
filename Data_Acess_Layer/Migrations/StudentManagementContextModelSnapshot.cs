@@ -80,11 +80,11 @@ namespace Data_Acess_Layer.Migrations
 
             modelBuilder.Entity("Data_Acess_Layer.Entities.StudentAddressEntity", b =>
                 {
-                    b.Property<int>("StudentAdressId")
+                    b.Property<int>("StudentAddressId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentAdressId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentAddressId"), 1L, 1);
 
                     b.Property<string>("Address1")
                         .IsRequired()
@@ -114,7 +114,7 @@ namespace Data_Acess_Layer.Migrations
                     b.Property<int>("Zipcode")
                         .HasColumnType("int");
 
-                    b.HasKey("StudentAdressId");
+                    b.HasKey("StudentAddressId");
 
                     b.HasIndex("StudentId");
 

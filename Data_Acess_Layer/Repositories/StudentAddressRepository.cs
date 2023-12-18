@@ -25,7 +25,7 @@ namespace Data_Acess_Layer.Repositories
 
         public StudentAddressEntity Get(int id)
         {
-            return _dbContext.Addresses.FirstOrDefault(x => x.StudentAdressId.Equals(id));
+            return _dbContext.Addresses.FirstOrDefault(x => x.StudentAddressId.Equals(id));
         }
 
         public void Post(StudentAddressEntity studentAddressEntity)
@@ -36,7 +36,7 @@ namespace Data_Acess_Layer.Repositories
 
         public bool Put(int id, StudentAddressEntity studentAddressEntity)
         {
-            var addressUpdate = _dbContext.Addresses.FirstOrDefault(x => x.StudentAdressId.Equals(id));
+            var addressUpdate = _dbContext.Addresses.FirstOrDefault(x => x.StudentAddressId.Equals(id));
 
             if (addressUpdate == null)
             {
@@ -50,7 +50,7 @@ namespace Data_Acess_Layer.Repositories
 
         public bool Delete(int id)
         {
-            var address = _dbContext.Addresses.FirstOrDefault(x => x.StudentAdressId.Equals(id));
+            var address = _dbContext.Addresses.FirstOrDefault(x => x.StudentAddressId.Equals(id));
             if (address == null)
             {
                 return false;

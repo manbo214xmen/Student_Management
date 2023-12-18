@@ -15,10 +15,9 @@ namespace Business_Logic_Layer.DTOs
         [NotNull]
         public string StudentName { get; set; }
         [NotNull]
-        public string GradeId { get; set; }
+        public string StudentEmail { get; set; }
+        public string StudentPhone { get; set; }
         public int StudentAge { get; set; }
         public int CurrentGradeId { get; set; }
-        public GradeEntity CurrentGrade { get; set; }
-        public virtual ICollection<CourseEntity> Courses { get; set; }
     }
 }

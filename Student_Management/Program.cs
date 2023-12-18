@@ -5,6 +5,7 @@ using Data_Acess_Layer.Repositories;
 using Business_Logic_Layer.Services;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using Business_Logic_Layer.MappingProfile;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -56,6 +57,9 @@ builder.Services.AddScoped<StudentAddressService>();
 
 builder.Services.AddScoped<CourseRepository>();
 builder.Services.AddScoped<CourseService>();
+
+builder.Services.AddAutoMapper(typeof(GradeMappingProfile));
+
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

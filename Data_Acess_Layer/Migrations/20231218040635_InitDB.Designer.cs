@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data_Acess_Layer.Migrations
 {
     [DbContext(typeof(StudentManagementContext))]
-    [Migration("20231215085502_NewForeignKey")]
-    partial class NewForeignKey
+    [Migration("20231218040635_InitDB")]
+    partial class InitDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -82,11 +82,11 @@ namespace Data_Acess_Layer.Migrations
 
             modelBuilder.Entity("Data_Acess_Layer.Entities.StudentAddressEntity", b =>
                 {
-                    b.Property<int>("StudentAdressId")
+                    b.Property<int>("StudentAddressId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentAdressId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentAddressId"), 1L, 1);
 
                     b.Property<string>("Address1")
                         .IsRequired()
@@ -116,7 +116,7 @@ namespace Data_Acess_Layer.Migrations
                     b.Property<int>("Zipcode")
                         .HasColumnType("int");
 
-                    b.HasKey("StudentAdressId");
+                    b.HasKey("StudentAddressId");
 
                     b.HasIndex("StudentId");
 

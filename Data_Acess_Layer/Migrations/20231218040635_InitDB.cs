@@ -4,7 +4,7 @@
 
 namespace Data_Acess_Layer.Migrations
 {
-    public partial class NewForeignKey : Migration
+    public partial class InitDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -63,7 +63,7 @@ namespace Data_Acess_Layer.Migrations
                 name: "Addresses",
                 columns: table => new
                 {
-                    StudentAdressId = table.Column<int>(type: "int", nullable: false)
+                    StudentAddressId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Address1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -76,7 +76,7 @@ namespace Data_Acess_Layer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Addresses", x => x.StudentAdressId);
+                    table.PrimaryKey("PK_Addresses", x => x.StudentAddressId);
                     table.ForeignKey(
                         name: "FK_Addresses_Students_StudentId",
                         column: x => x.StudentId,

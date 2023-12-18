@@ -8,7 +8,7 @@ namespace Data_Acess_Layer.Entities
     {
 
         [Key]
-        public int StudentAdressId { get; set; }
+        public int StudentAddressId { get; set; }
         [Required]
         public string Address1 { get; set; }
         public string? Address2 { get; set; }
