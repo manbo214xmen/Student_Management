@@ -21,6 +21,38 @@ namespace Business_Logic_Layer.Services
             this._mapper = mapper;
         }
 
+        public List<StudentAddressDTO> Get()
+        {
 
+
+            return _mapper.Map<List<StudentAddressDTO>>(_studentAddressRepository.Get());
+        }
+
+        //public List<StudentDTO> GetFilterStudent(string? name, string? gradeId, string? sortType, string? sortField, int pageNumber, int pageSize)
+        //{
+
+
+        //    return mapper.Map<List<StudentDTO>>(studentRepository.GetFilterStudent(name, gradeId, sortType, sortField, pageNumber, pageSize));
+        //}
+
+        public StudentAddressDTO Get(int id)
+        {
+
+
+            return _mapper.Map<StudentAddressDTO>(_studentAddressRepository.Get(id));
+        }
+        public void Post(StudentAddressDTO studentAddress)
+        {
+            _studentAddressRepository.Post(_mapper.Map<StudentAddressEntity>(studentAddress));
+        }
+        public bool Put(int id, StudentAddressDTO studentAddress)
+        {
+            return _studentAddressRepository.Put(id, _mapper.Map<StudentAddressEntity>(studentAddress));
+        }
+        public bool Delete(int id)
+        {
+            return _studentAddressRepository.Delete(id);
+
+        }
     }
 }
