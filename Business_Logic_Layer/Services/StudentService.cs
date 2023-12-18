@@ -21,9 +21,7 @@ namespace Business_Logic_Layer.Services
         }
 
         public List<StudentDTO> Get()
-        {
-
-
+        { 
             return _mapper.Map<List<StudentDTO>>(_studentRepository.Get());
         }
 
@@ -46,7 +44,7 @@ namespace Business_Logic_Layer.Services
         }
         public bool Put(int id, StudentDTO student)
         {
-            return _studentRepository.Put(id,_mapper.Map<StudentEntity>(student));
+            return _studentRepository.Put(id, _mapper.Map<StudentEntity>(student));
         }
         public bool Delete(int id)
         {

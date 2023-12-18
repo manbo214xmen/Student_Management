@@ -10,10 +10,10 @@ namespace Student_Management.Controllers
     public class StudentsController : Controller
     {
 
-        StudentService studentService;
+        StudentService _studentService;
         public StudentsController(StudentService studentService)
         {
-            this.studentService = studentService;
+            this._studentService = studentService;
         }
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace Student_Management.Controllers
         [HttpGet]
         public List<StudentDTO> Get()
         {
-            return studentService.Get();
+            return _studentService.Get();
         }
 
         //[HttpGet]
@@ -38,7 +38,7 @@ namespace Student_Management.Controllers
         [HttpGet("{id}")]
         public StudentDTO Get(int id)
         {
-            return studentService.Get(id);
+            return _studentService.Get(id);
 
         }
 
@@ -50,7 +50,7 @@ namespace Student_Management.Controllers
         {
             if (ModelState.IsValid)
             {
-                studentService.Post(student);
+                _studentService.Post(student);
                 return NoContent();
             }
             return BadRequest();
@@ -68,7 +68,7 @@ namespace Student_Management.Controllers
                 return BadRequest();
             }
 
-            if (studentService.Put(id, student))
+            if (_studentService.Put(id, student))
             {
                 return NoContent();
             }
@@ -83,7 +83,7 @@ namespace Student_Management.Controllers
         public ActionResult Delete(int id)
         {
 
-            if (studentService.Delete(id))
+            if (_studentService.Delete(id))
             {
                 return NoContent();
             }
