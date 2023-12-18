@@ -47,12 +47,15 @@ namespace Student_Management.Controllers
         [HttpPost]
         public ActionResult Post(StudentAddressDTO studentAddress)
         {
-            if (ModelState.IsValid)
+            try
             {
                 _studentAddressService.Post(studentAddress);
-                return NoContent();
+                return Ok("Student address created successfully");
             }
-            return BadRequest();
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message); // Return a 400 Bad Request with the error message
+            }
 
         }
 
@@ -66,12 +69,15 @@ namespace Student_Management.Controllers
             {
                 return BadRequest();
             }
-
-            if (_studentAddressService.Put(id, studentAddress))
+            try
             {
-                return NoContent();
+                _studentAddressService.Post(studentAddress);
+                return Ok("Student adddress updated successfully");
             }
-            return BadRequest();
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message); // Return a 400 Bad Request with the error message
+            }
         }
 
 

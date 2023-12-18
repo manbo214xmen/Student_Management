@@ -17,8 +17,8 @@ namespace Data_Acess_Layer.Entities
         public string State { get; set; }
         public string Country { get; set; }
 
-        [ForeignKey("AddressOfStudentId")]
-        public int AddressOfStudentId { get; set; }
+        [ForeignKey("StudentId")]
+        public int StudentId { get; set; }
 
         public StudentEntity Student { get; set; }
 

@@ -7,16 +7,19 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Business_Logic_Layer.DTOs;
 using Data_Acess_Layer.Entities;
+using Business_Logic_Layer.Validations;
 
 namespace Business_Logic_Layer.Services
 {
     public class StudentAddressService
     {
+        private readonly StudentAddressValidation _studentAddressValidation;
         private readonly StudentAddressRepository _studentAddressRepository;
         private readonly IMapper _mapper;
 
-        public StudentAddressService(StudentAddressRepository studentAddressRepository, IMapper mapper)
+        public StudentAddressService(StudentAddressRepository studentAddressRepository, StudentAddressValidation studentAddressValidation,IMapper mapper)
         {
+            this._studentAddressValidation = studentAddressValidation;
             this._studentAddressRepository = studentAddressRepository;
             this._mapper = mapper;
         }
@@ -43,10 +46,14 @@ namespace Business_Logic_Layer.Services
         }
         public void Post(StudentAddressDTO studentAddress)
         {
+            _studentAddressValidation.ValidateStudentAddress(studentAddress);
+
             _studentAddressRepository.Post(_mapper.Map<StudentAddressEntity>(studentAddress));
         }
         public bool Put(int id, StudentAddressDTO studentAddress)
         {
+            _studentAddressValidation.ValidateStudentAddress(studentAddress);
+
             return _studentAddressRepository.Put(id, _mapper.Map<StudentAddressEntity>(studentAddress));
         }
         public bool Delete(int id)

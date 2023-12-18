@@ -5,7 +5,8 @@ using Data_Acess_Layer.Repositories;
 using Business_Logic_Layer.Services;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
-using Business_Logic_Layer.MappingProfile;
+using Business_Logic_Layer.MappingProfiles;
+using Business_Logic_Layer.Validations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,18 +48,20 @@ builder.Services.AddDbContext<StudentManagementContext>(options =>
 });
 
 builder.Services.AddScoped<StudentRepository>();
+builder.Services.AddScoped<StudentValidation>();
 builder.Services.AddScoped<StudentService>();
 
 builder.Services.AddScoped<GradeRepository>();
+builder.Services.AddScoped<GradeValidation>();
 builder.Services.AddScoped<GradeService>();
 
 builder.Services.AddScoped<StudentAddressRepository>();
+builder.Services.AddScoped<StudentAddressValidation>();
 builder.Services.AddScoped<StudentAddressService>();
 
 builder.Services.AddScoped<CourseRepository>();
+builder.Services.AddScoped<CourseValidation>();
 builder.Services.AddScoped<CourseService>();
-
-builder.Services.AddAutoMapper(typeof(GradeMappingProfile));
 
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

@@ -1,5 +1,6 @@
 ﻿using Data_Acess_Layer.DBContext;
 using Data_Acess_Layer.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,28 @@ namespace Data_Acess_Layer.Repositories
         {
             this._dbContext = dbContext;
         }
+
+        public bool IsPhoneNumberUnique(string phone)
+        {
+            // Implement logic to check if the phone number is unique in your database
+            // Return true if the phone number is unique, false otherwise
+            return !_dbContext.Students.Any(s => s.StudentPhone == phone);
+        }
+
+        //To check if Email is unique
+        public bool IsEmailUnique(string email)
+        {
+            // Implement logic to check if the email is unique in your database
+            // Return true if the email is unique, false otherwise
+            return !_dbContext.Students.Any(s => s.StudentEmail == email);
+        }
+
+        //To check if StudentId exists
+        public bool Exists(int studentId)
+        {
+            return _dbContext.Students.Any(g => g.StudentId == studentId);
+        }
+
         public List<StudentEntity> Get()
         {
             return _dbContext.Students.ToList();
@@ -57,6 +80,8 @@ namespace Data_Acess_Layer.Repositories
         {
             return _dbContext.Students.FirstOrDefault(x => x.StudentId.Equals(id));
         }
+
+        
         public void Post(StudentEntity student)
         {
             _dbContext.Students.Add(student);

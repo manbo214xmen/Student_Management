@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Business_Logic_Layer.DTOs;
-using Business_Logic_Layer.MappingProfile;
+using Business_Logic_Layer.MappingProfiles;
 using Data_Acess_Layer.Entities;
 
 

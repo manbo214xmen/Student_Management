@@ -8,7 +8,7 @@ using Business_Logic_Layer.DTOs;
 using Data_Acess_Layer.Entities;
 using AutoMapper;
 
-namespace Business_Logic_Layer.MappingProfile
+namespace Business_Logic_Layer.MappingProfiles
 { 
     public class GradeMappingProfile :  Profile 
     {

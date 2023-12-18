@@ -48,13 +48,15 @@ namespace Student_Management.Controllers
         [HttpPost]
         public ActionResult Post(StudentDTO student)
         {
-            if (ModelState.IsValid)
+            try
             {
                 _studentService.Post(student);
-                return NoContent();
+                return Ok("Student created successfully");
             }
-            return BadRequest();
-
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message); // Return a 400 Bad Request with the error message
+            }            
         }
 
         /// <summary>
@@ -65,14 +67,23 @@ namespace Student_Management.Controllers
         {
             if (id != student.StudentId)
             {
-                return BadRequest();
+                return BadRequest("Invalid StudentId !!!");
+            }
+            try
+            {
+                _studentService.Put(id, student);
+                return Ok("Student updated successfully");
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message); // Return a 400 Bad Request with the error message
             }
 
-            if (_studentService.Put(id, student))
-            {
-                return NoContent();
-            }
-            return BadRequest();
+            //if (_studentService.Put(id, student))
+            //{
+            //    return NoContent();
+            //}
+            //return BadRequest();
         }
 
 
