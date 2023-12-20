@@ -25,6 +25,14 @@ namespace Business_Logic_Layer.Validations
            
         }
 
+        public void ValidateAddressId(int addressId)
+        {
+            if (!_studentAddressRepository.Exists(addressId))
+            {
+                throw new ArgumentException("Invalid Address Id. Address not found.!!!");
+            }
+        }
+
         private void ValidateStudent(int studentId)
         {
             if (!_studentRepository.Exists(studentId))

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Data_Acess_Layer.Entities;
 
@@ -12,6 +13,7 @@ namespace Business_Logic_Layer.DTOs
     public class StudentDTO
     {
         [NotNull]
+        [JsonIgnore]
         public int StudentId { get; set; }
         [NotNull]
         [Required]

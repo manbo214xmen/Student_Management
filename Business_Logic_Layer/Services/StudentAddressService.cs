@@ -49,7 +49,7 @@ namespace Business_Logic_Layer.Services
         }
         public bool Put(int id, StudentAddressDTO studentAddress)
         {
-            _studentAddressValidation.ValidateStudentAddress(studentAddress);
+            _studentAddressValidation.ValidateAddressId(id);
 
             return _studentAddressRepository.Put(id, _mapper.Map<StudentAddressEntity>(studentAddress));
         }
