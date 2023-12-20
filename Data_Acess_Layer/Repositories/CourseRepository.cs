@@ -18,6 +18,15 @@ namespace Data_Acess_Layer.Repositories
             this._dbContext = dbContext;
         }
 
+        public bool Exists(int courseId)
+        {
+            return _dbContext.Courses.Any(g => g.CourseId == courseId);
+        }
+
+        public bool IsCourseNameUnique(string name)
+        {
+            return !_dbContext.Courses.Any(g => g.CourseName == name);
+        }
 
         public List<CourseEntity> Get()
         {
