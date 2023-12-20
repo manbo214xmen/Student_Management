@@ -41,6 +41,16 @@ namespace Data_Acess_Layer.Repositories
             return _dbContext.Students.Any(g => g.StudentId == studentId);
         }
 
+        public IEnumerable<CourseEntity> GetEnrolledCoursesByStudentId(int studentId)
+        {
+            // Implement logic to fetch enrolled courses for a student
+            var student = _dbContext.Students
+                .Include(s => s.StudentCourses)
+                .ThenInclude(sc => sc.Course)
+                .FirstOrDefault(s => s.StudentId == studentId);
+
+            return student?.StudentCourses?.Select(sc => sc.Course);
+        }
         public List<StudentEntity> Get()
         {
             return _dbContext.Students.ToList();

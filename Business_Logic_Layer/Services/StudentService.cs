@@ -44,6 +44,12 @@ namespace Business_Logic_Layer.Services
             return _mapper.Map<StudentDetailDTO>(studentWithDetails);
         }
 
+        public IEnumerable<CourseDTO> GetEnrolledCoursesByStudentId(int studentId)
+        {
+            var enrolledCourses = _studentRepository.GetEnrolledCoursesByStudentId(studentId);
+            return _mapper.Map<IEnumerable<CourseDTO>>(enrolledCourses);
+        }
+
         public void AssignCourse(int studentId, int courseId)
         {
             _studentValidation.ValidateStudentId(studentId);

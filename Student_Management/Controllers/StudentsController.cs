@@ -41,6 +41,19 @@ namespace Student_Management.Controllers
             return Ok(studentWithDetails);
         }
 
+        /// <summary>
+        /// To show which courses that a specific student enroll in
+        /// </summary>
+        [HttpGet("{studentId}/courses")]
+        public IActionResult GetEnrolledCourses(int studentId)
+        {
+            var enrolledCourses = _studentService.GetEnrolledCoursesByStudentId(studentId);
+            return Ok(enrolledCourses);
+        }
+
+        /// <summary>
+        /// To assign a student to a course
+        /// </summary>
         [HttpPost("{studentId}/assignCourse/{courseId}")]
         public IActionResult AssignCourse(int studentId, int courseId)
         {
