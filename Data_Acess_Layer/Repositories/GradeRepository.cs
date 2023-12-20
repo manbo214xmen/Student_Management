@@ -19,9 +19,14 @@ namespace Data_Acess_Layer.Repositories
         }
 
         //To check if GradeId exists
-        public bool Exists(int gradeId)
+        public bool Exists(int id)
         {
-            return _dbContext.Grades.Any(g => g.GradeId == gradeId);
+            return _dbContext.Grades.Any(g => g.GradeId == id);
+        }
+
+        public bool IsGradeNameUnique(string name)
+        {
+            return !_dbContext.Grades.Any(g => g.GradeName == name);
         }
 
         public List<GradeEntity> Get()

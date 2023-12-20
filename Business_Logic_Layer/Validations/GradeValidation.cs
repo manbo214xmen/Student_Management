@@ -3,10 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Business_Logic_Layer.DTOs;
+using Data_Acess_Layer.Repositories;
 
 namespace Business_Logic_Layer.Validations
 {
     public class GradeValidation
     {
+        private readonly GradeRepository _gradeRepository;
+
+        public GradeValidation(GradeRepository gradeRepository)
+        {
+            _gradeRepository = gradeRepository; 
+        }
+
+        public void ValidateGrade(GradeDTO grade)
+        {
+            if(!_gradeRepository.Exists(grade.GradeId))
+            {
+                throw new ArgumentException("Invalid gradeId. Grade not found.!!!");
+            }
+
+            if(!_gradeRepository.IsGradeNameUnique(grade.GradeName))
+            {
+                throw new ArgumentException("Email Already Exists.!!!");
+            }
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace Data_Acess_Layer
         public StudentManagementContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<StudentManagementContext>();
-            optionsBuilder.UseSqlServer("Server=localhost;Database=StudentManagementContext;User Id=sa;Password=hoangminhdung123;Trusted_Connection=false;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Server=localhost;Database=StudentManagementContext;User Id=sa;Password=Vegeta1762001;Trusted_Connection=false;TrustServerCertificate=True;");
 
             return new StudentManagementContext(optionsBuilder.Options);
         }

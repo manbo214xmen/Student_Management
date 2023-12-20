@@ -27,7 +27,6 @@ namespace Business_Logic_Layer.Services
         public List<StudentAddressDTO> Get()
         {
 
-
             return _mapper.Map<List<StudentAddressDTO>>(_studentAddressRepository.Get());
         }
 
@@ -40,8 +39,6 @@ namespace Business_Logic_Layer.Services
 
         public StudentAddressDTO Get(int id)
         {
-
-
             return _mapper.Map<StudentAddressDTO>(_studentAddressRepository.Get(id));
         }
         public void Post(StudentAddressDTO studentAddress)
