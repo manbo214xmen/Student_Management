@@ -35,6 +35,11 @@ namespace Business_Logic_Layer.Services
         //    return mapper.Map<List<StudentDTO>>(studentRepository.GetFilterStudent(name, gradeId, sortType, sortField, pageNumber, pageSize));
         //}
 
+        public StudentDetailDTO GetStudentWithDetailsById(int studentId)
+        {
+            var studentWithDetails = _studentRepository.GetStudentWithDetailsById(studentId);
+            return _mapper.Map<StudentDetailDTO>(studentWithDetails);
+        }
         public StudentDTO Get(int id)
         {
             return _mapper.Map<StudentDTO>(_studentRepository.Get(id));

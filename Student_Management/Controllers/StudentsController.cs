@@ -25,6 +25,21 @@ namespace Student_Management.Controllers
             return _studentService.Get();
         }
 
+        /// <summary>
+        /// Get a specific student with all related information from database
+        /// </summary>
+        [HttpGet("details/{id}")]
+        public IActionResult GetStudentWithDetailsById(int id)
+        {
+            var studentWithDetails = _studentService.GetStudentWithDetailsById(id);
+
+            if (studentWithDetails == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(studentWithDetails);
+        }
         //[HttpGet]
         //[Route("Filter")]
         //public List<StudentDTO> Get([FromQuery] string? name, string? gradeId, string? sortType, string? sortField, int pageNumber, int pageSize)
@@ -65,10 +80,10 @@ namespace Student_Management.Controllers
         [HttpPut("{id}")]
         public ActionResult Put(int id, StudentDTO student)
         {
-            if (id != student.StudentId)
-            {
-                return BadRequest("Invalid StudentId !!!");
-            }
+            //if (id != student.StudentId)
+            //{
+            //    return BadRequest("Invalid StudentId !!!");
+            //}
             try
             {
                 _studentService.Put(id, student);

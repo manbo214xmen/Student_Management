@@ -44,7 +44,15 @@ namespace Data_Acess_Layer.Repositories
             {
                 return false;
             }
+            // Retrieve the current student entity from the context
+            var currentStudent = _dbContext.Students.FirstOrDefault(s => s.StudentId == studentAddress.StudentId);
+
+            if (currentStudent == null)
+            {
+                return false; // or handle the situation where the student is not found
+            }
             studentAddress.StudentAddressId = id;
+            studentAddress.StudentId = currentStudent.StudentId;
             _dbContext.Addresses.Update(studentAddress);
             _dbContext.SaveChanges();
             return true;

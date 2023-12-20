@@ -63,10 +63,6 @@ namespace Student_Management.Controllers
         [HttpPut("{id}")]
         public ActionResult Put(int id, CourseDTO course)
         {
-            if (id != course.CourseId)
-            {
-                return BadRequest();
-            }
 
             try
             {

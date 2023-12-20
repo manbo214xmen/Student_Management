@@ -82,7 +82,13 @@ namespace Data_Acess_Layer.Repositories
             return _dbContext.Students.FirstOrDefault(x => x.StudentId.Equals(id));
         }
 
-        
+        public StudentEntity GetStudentWithDetailsById(int studentId)
+        {
+            return _dbContext.Students
+                .Include(s => s.CurrentGrade)
+                .Include(s => s.Address)
+                .FirstOrDefault(s => s.StudentId == studentId);
+        }
         public void Post(StudentEntity student)
         {
             _dbContext.Students.Add(student);

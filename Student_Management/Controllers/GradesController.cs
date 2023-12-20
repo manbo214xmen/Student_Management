@@ -64,10 +64,6 @@ namespace Student_Management.Controllers
         [HttpPut("{id}")]
         public ActionResult Put(int id, GradeDTO grade)
         {
-            if (id != grade.GradeId)
-            {
-                return BadRequest();
-            }
             try
             {
                 _gradeService.Put(id, grade);
