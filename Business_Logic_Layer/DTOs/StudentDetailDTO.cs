@@ -23,5 +23,6 @@ namespace Business_Logic_Layer.DTOs
         // Include properties for Grade and Address
         public GradeDTO CurrentGrade { get; set; }
         public StudentAddressDTO Address { get; set; }
+        public CourseDTO Course { get; set; }
     }
 }

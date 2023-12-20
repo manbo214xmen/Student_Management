@@ -40,6 +40,21 @@ namespace Student_Management.Controllers
 
             return Ok(studentWithDetails);
         }
+
+        [HttpPost("{studentId}/assignCourse/{courseId}")]
+        public IActionResult AssignCourse(int studentId, int courseId)
+        {
+            try
+            {
+                _studentService.AssignCourse(studentId, courseId);
+                return Ok("Assignment successful");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error: {ex.Message}");
+            }
+        }
+
         //[HttpGet]
         //[Route("Filter")]
         //public List<StudentDTO> Get([FromQuery] string? name, string? gradeId, string? sortType, string? sortField, int pageNumber, int pageSize)

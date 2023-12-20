@@ -18,7 +18,13 @@ namespace Data_Acess_Layer.DBContext
         public DbSet<StudentAddressEntity> Addresses { get; set; }
         public DbSet<CourseEntity> Courses { get; set; }
         public DbSet<GradeEntity> Grades { get; set; }
+        public DbSet<StudentCourseEntity> StudentCourses { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<StudentCourseEntity>()
+                .HasKey(sc => new { sc.StudentId, sc.CourseId });
+        }
 
     }
 }

@@ -89,6 +89,19 @@ namespace Data_Acess_Layer.Repositories
                 .Include(s => s.Address)
                 .FirstOrDefault(s => s.StudentId == studentId);
         }
+
+        public void AssignCourse(int studentId, int courseId)
+        {
+            var studentCourse = new StudentCourseEntity
+            {
+                StudentId = studentId,
+                CourseId = courseId
+            };
+
+            _dbContext.StudentCourses.Add(studentCourse);
+            _dbContext.SaveChanges();
+        }
+
         public void Post(StudentEntity student)
         {
             _dbContext.Students.Add(student);

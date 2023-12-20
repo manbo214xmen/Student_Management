@@ -15,11 +15,14 @@ namespace Business_Logic_Layer.Services
     {
         private readonly StudentRepository _studentRepository;
         private readonly StudentValidation _studentValidation;
+        private readonly CourseValidation  _courseValidation;
         private readonly IMapper _mapper;
-        public StudentService(StudentRepository studentRepository, IMapper mapper, StudentValidation studentValidation)
+        public StudentService(StudentRepository studentRepository, IMapper mapper, 
+                                StudentValidation studentValidation, CourseValidation courseValidation)
         {
             this._studentRepository = studentRepository;
             this._studentValidation = studentValidation;
+            this._courseValidation = courseValidation;
             this._mapper = mapper;
         }
 
@@ -40,6 +43,14 @@ namespace Business_Logic_Layer.Services
             var studentWithDetails = _studentRepository.GetStudentWithDetailsById(studentId);
             return _mapper.Map<StudentDetailDTO>(studentWithDetails);
         }
+
+        public void AssignCourse(int studentId, int courseId)
+        {
+            _studentValidation.ValidateStudentId(studentId);
+            _courseValidation.ValidateCourseId(courseId);
+            _studentRepository.AssignCourse(studentId, courseId);
+        }
+
         public StudentDTO Get(int id)
         {
             return _mapper.Map<StudentDTO>(_studentRepository.Get(id));

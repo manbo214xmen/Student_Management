@@ -23,15 +23,9 @@ namespace Data_Acess_Layer.Entities
         public GradeEntity CurrentGrade { get; set; }
         public StudentAddressEntity Address { get; set; }
 
-        public virtual ICollection<CourseEntity> Courses { get; set; }
+        public ICollection<StudentCourseEntity> StudentCourses { get; set; }
         //public StudentAddressEntity Address { get; set; }
-
-
-        public StudentEntity()
-        {
-            this.Courses = new HashSet<CourseEntity>();
-        }
-  
+        
     }
 }
 

@@ -27,6 +27,14 @@ namespace Business_Logic_Layer.Validations
             ValidatePhoneNumber(student.StudentPhone);
         }
 
+        public void ValidateStudentId (int studentId)
+        {
+            if (!_studentRepository.Exists(studentId))
+            {
+                throw new ArgumentException("Invalid studentId. Student not found.!!!");
+            }
+        }
+
         private void ValidateGrade(int gradeId)
         {
             if (!_gradeRepository.Exists(gradeId))
