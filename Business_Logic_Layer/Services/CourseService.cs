@@ -7,18 +7,20 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Business_Logic_Layer.DTOs;
 using Data_Acess_Layer.Entities;
-
+using Business_Logic_Layer.Validations;
 
 namespace Business_Logic_Layer.Services
 {
     public class CourseService
     {
         private readonly CourseRepository _courseRepository;
+        private readonly CourseValidation _courseValidation;
         private readonly IMapper _mapper;
 
-        public CourseService(CourseRepository courseRepository, IMapper mapper)
+        public CourseService(CourseRepository courseRepository, CourseValidation courseValidation ,IMapper mapper)
         {
             this._courseRepository = courseRepository;
+            this._courseValidation = courseValidation;
             this._mapper = mapper;
         }
 
@@ -45,10 +47,12 @@ namespace Business_Logic_Layer.Services
 
         public void Post(CourseDTO course)
         {
+            _courseValidation.ValidateCourse(course);
             _courseRepository.Post(_mapper.Map<CourseEntity>(course));
         }
         public bool Put(int id, CourseDTO course)
         {
+            _courseValidation.ValidateCourse(course);
             return _courseRepository.Put(id, _mapper.Map<CourseEntity>(course));
         }
         public bool Delete(int id)

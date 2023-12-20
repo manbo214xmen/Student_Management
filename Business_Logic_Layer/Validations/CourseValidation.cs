@@ -19,13 +19,10 @@ namespace Business_Logic_Layer.Validations
 
         public void ValidateCourse(CourseDTO course)
         {
-            if (!_courseRepository.Exists(course.CourseId))
-            {
-                throw new ArgumentException("Invalid gradeId. Grade not found.!!!");
-            }
+            
              if(!_courseRepository.IsCourseNameUnique(course.CourseName))
             {
-                throw new ArgumentException("Course Name are already exists. !!!");
+                throw new ArgumentException("Course Name Already Exists. !!!");
             }
         }
     }

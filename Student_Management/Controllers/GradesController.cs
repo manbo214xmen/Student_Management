@@ -46,12 +46,15 @@ namespace Student_Management.Controllers
         [HttpPost]
         public ActionResult Post(GradeDTO grade)
         {
-            if (ModelState.IsValid)
+            try
             {
                 _gradeService.Post(grade);
-                return NoContent();
+                return Ok("Grade created successfully");
             }
-            return BadRequest();
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message); // Return a 400 Bad Request with the error message
+            }
 
         }
 
@@ -65,12 +68,15 @@ namespace Student_Management.Controllers
             {
                 return BadRequest();
             }
-
-            if (_gradeService.Put(id, grade))
+            try
             {
-                return NoContent();
+                _gradeService.Put(id, grade);
+                return Ok("Grade updated successfully");
             }
-            return BadRequest();
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message); // Return a 400 Bad Request with the error message
+            }
         }
 
 

@@ -19,14 +19,9 @@ namespace Business_Logic_Layer.Validations
 
         public void ValidateGrade(GradeDTO grade)
         {
-            if(!_gradeRepository.Exists(grade.GradeId))
-            {
-                throw new ArgumentException("Invalid gradeId. Grade not found.!!!");
-            }
-
             if(!_gradeRepository.IsGradeNameUnique(grade.GradeName))
             {
-                throw new ArgumentException("Email Already Exists.!!!");
+                throw new ArgumentException("Grade Name Already Exists.!!!");
             }
         }
     }

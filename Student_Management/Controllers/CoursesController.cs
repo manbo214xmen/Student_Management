@@ -46,13 +46,15 @@ namespace Student_Management.Controllers
         [HttpPost]
         public ActionResult Post(CourseDTO course)
         {
-            if (ModelState.IsValid)
+            try
             {
                 _courseService.Post(course);
-                return NoContent();
+                return Ok("Course created successfully");
             }
-            return BadRequest();
-
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message); // Return a 400 Bad Request with the error message
+            }
         }
 
         /// <summary>
@@ -66,11 +68,15 @@ namespace Student_Management.Controllers
                 return BadRequest();
             }
 
-            if (_courseService.Put(id, course))
+            try
             {
-                return NoContent();
+                _courseService.Put(id, course);
+                return Ok("Course updated successfully");
             }
-            return BadRequest();
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message); // Return a 400 Bad Request with the error message
+            }
         }
 
 
