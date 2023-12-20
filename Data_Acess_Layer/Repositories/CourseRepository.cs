@@ -52,7 +52,7 @@ namespace Data_Acess_Layer.Repositories
             {
                 return false;
             }
-
+            course.CourseId = id;
             _dbContext.Courses.Update(course);
             _dbContext.SaveChanges();
             return true;

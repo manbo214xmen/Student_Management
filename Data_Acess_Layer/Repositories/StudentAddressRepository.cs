@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Data_Acess_Layer.Repositories
 {
@@ -28,14 +29,14 @@ namespace Data_Acess_Layer.Repositories
             return _dbContext.Addresses.FirstOrDefault(x => x.StudentAddressId.Equals(id));
         }
 
-        public void Post(StudentAddressEntity studentAddressEntity)
+        public void Post(StudentAddressEntity studentAddress)
         {
 
-            _dbContext.Addresses.Add(studentAddressEntity);
+            _dbContext.Addresses.Add(studentAddress);
             _dbContext.SaveChanges();
         }
 
-        public bool Put(int id, StudentAddressEntity studentAddressEntity)
+        public bool Put(int id, StudentAddressEntity studentAddress)
         {
             var addressUpdate = _dbContext.Addresses.FirstOrDefault(x => x.StudentAddressId.Equals(id));
 
@@ -43,8 +44,8 @@ namespace Data_Acess_Layer.Repositories
             {
                 return false;
             }
-
-            _dbContext.Addresses.Update(studentAddressEntity);
+            studentAddress.StudentAddressId = id;
+            _dbContext.Addresses.Update(studentAddress);
             _dbContext.SaveChanges();
             return true;
         }

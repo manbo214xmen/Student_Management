@@ -53,7 +53,7 @@ namespace Data_Acess_Layer.Repositories
             {
                 return false;
             }
-
+            grade.GradeId = id;
             _dbContext.Grades.Update(grade);
             _dbContext.SaveChanges();
             return true;
