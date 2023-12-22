@@ -68,6 +68,16 @@ namespace Student_Management.Controllers
             }
         }
 
+        /// <summary>
+        /// To page and filter students
+        /// </summary>
+        [HttpGet("filter")]
+        public IActionResult Get(int page = 1, int pageSize = 3, string filter = "")
+        {
+            var students = _studentService.PagingAndFilteringStudents(page, pageSize, filter);
+            return Ok(students);
+        }
+
         //[HttpGet]
         //[Route("Filter")]
         //public List<StudentDTO> Get([FromQuery] string? name, string? gradeId, string? sortType, string? sortField, int pageNumber, int pageSize)

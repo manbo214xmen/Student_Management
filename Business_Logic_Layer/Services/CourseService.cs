@@ -38,6 +38,13 @@ namespace Business_Logic_Layer.Services
         //    return mapper.Map<List<StudentDTO>>(studentRepository.GetFilterStudent(name, gradeId, sortType, sortField, pageNumber, pageSize));
         //}
 
+        //Paging and Filtering Courses
+        public IEnumerable<CourseDTO> PagingAndFilteringCourses(int page, int pageSize, string filter)
+        {
+            var courses = _courseRepository.PagingAndFilteringCourses(page, pageSize, filter);
+            return _mapper.Map<List<CourseDTO>>(courses);
+        }
+
         public CourseDTO Get(int id)
         {
 

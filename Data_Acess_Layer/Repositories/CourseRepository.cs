@@ -28,6 +28,23 @@ namespace Data_Acess_Layer.Repositories
             return !_dbContext.Courses.Any(g => g.CourseName == name);
         }
 
+        //Paging and Filtering Courses
+        public IEnumerable<CourseEntity> PagingAndFilteringCourses(int page, int pageSize, string filter)
+        {
+            //Get all courses
+            IEnumerable<CourseEntity> courses = Get();
+            // Apply filtering
+            var filteredCourses = courses
+                        .Where(s => s.CourseName.Contains(filter, StringComparison.OrdinalIgnoreCase))
+                        .ToList(); // ToList to execute filtering on memory
+
+            // Apply paging                                   
+            var paginatedCourses = filteredCourses
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList(); // ToList to execute paging on memory
+            return paginatedCourses;
+        }
         public List<CourseEntity> Get()
         {
             return _dbContext.Courses.ToList();

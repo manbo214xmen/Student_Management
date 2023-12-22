@@ -55,6 +55,26 @@ namespace Data_Acess_Layer.Repositories
         {
             return _dbContext.Students.ToList();
         }
+
+        //Paging and Filtering Students
+        public IEnumerable<StudentEntity> PagingAndFilteringStudents(int page, int pageSize, string filter)
+        {
+            //Get all students
+            IEnumerable<StudentEntity> students = Get();
+            // Apply filtering
+            var filteredStudents = students
+                        .Where(s => s.StudentName.Contains(filter, StringComparison.OrdinalIgnoreCase))
+                        .ToList(); // ToList to execute filtering on memory
+
+            // Apply paging                                   
+            var paginatedStudents = filteredStudents
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList(); // ToList to execute paging on memory
+            return paginatedStudents;
+        }
+
+
         //public List<StudentEntity> GetFilterStudent(string? name, string? gradeId, string? sortType, string? sortField, int pageNumber, int pageSize)
         //{
 

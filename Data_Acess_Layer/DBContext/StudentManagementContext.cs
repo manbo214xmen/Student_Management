@@ -24,7 +24,10 @@ namespace Data_Acess_Layer.DBContext
         {
             modelBuilder.Entity<StudentCourseEntity>()
                 .HasKey(sc => new { sc.StudentId, sc.CourseId });
+            modelBuilder.Entity<StudentEntity>()
+                .HasOne<StudentAddressEntity>(s => s.Address)
+                .WithOne(ad => ad.Student)
+                .HasForeignKey<StudentAddressEntity>(ad => ad.StudentId);
         }
-
     }
 }

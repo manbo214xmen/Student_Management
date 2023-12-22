@@ -18,7 +18,6 @@ namespace Data_Acess_Layer.Entities
         public string State { get; set; }
         public string Country { get; set; }
 
-        [BindNever]
         public int StudentId { get; set; }
 
         public StudentEntity Student { get; set; }

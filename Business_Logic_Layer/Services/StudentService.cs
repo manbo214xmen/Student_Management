@@ -38,6 +38,12 @@ namespace Business_Logic_Layer.Services
         //    return mapper.Map<List<StudentDTO>>(studentRepository.GetFilterStudent(name, gradeId, sortType, sortField, pageNumber, pageSize));
         //}
 
+        public IEnumerable<StudentDTO> PagingAndFilteringStudents(int page, int pageSize, string filter)
+        {
+            var students = _studentRepository.PagingAndFilteringStudents(page, pageSize, filter);
+            return _mapper.Map<List<StudentDTO>>(students);
+        }
+
         public StudentDetailDTO GetStudentWithDetailsById(int studentId)
         {
             var studentWithDetails = _studentRepository.GetStudentWithDetailsById(studentId);
@@ -56,6 +62,8 @@ namespace Business_Logic_Layer.Services
             _courseValidation.ValidateCourseId(courseId);
             _studentRepository.AssignCourse(studentId, courseId);
         }
+
+       
 
         public StudentDTO Get(int id)
         {
