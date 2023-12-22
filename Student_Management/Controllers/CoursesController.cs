@@ -34,6 +34,16 @@ namespace Student_Management.Controllers
             return Ok(courses);
         }
 
+        /// <summary>
+        /// To get students by courseId
+        /// </summary>
+        [HttpGet("byCourse/{courseId}")]
+        public IActionResult GetStudentsByCourseId(int courseId)
+        {
+            var students = _courseService.GetStudentsByCourseId(courseId);
+            return Ok(students);
+        }
+
         //[HttpGet]
         //[Route("Filter")]
         //public List<StudentDTO> Get([FromQuery] string? name, string? gradeId, string? sortType, string? sortField, int pageNumber, int pageSize)

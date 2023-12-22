@@ -17,7 +17,8 @@ namespace Business_Logic_Layer.Services
         private readonly CourseValidation _courseValidation;
         private readonly IMapper _mapper;
 
-        public CourseService(CourseRepository courseRepository, CourseValidation courseValidation ,IMapper mapper)
+        public CourseService(CourseRepository courseRepository, CourseValidation courseValidation
+                              ,IMapper mapper)
         {
             this._courseRepository = courseRepository;
             this._courseValidation = courseValidation;
@@ -43,6 +44,12 @@ namespace Business_Logic_Layer.Services
         {
             var courses = _courseRepository.PagingAndFilteringCourses(page, pageSize, filter);
             return _mapper.Map<List<CourseDTO>>(courses);
+        }
+
+        public List<StudentDTO> GetStudentsByCourseId(int courseId)
+        {
+            var students = _courseRepository.GetStudentsByCourseId(courseId);
+            return _mapper.Map<List<StudentDTO>>(students);
         }
 
         public CourseDTO Get(int id)

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Data_Acess_Layer.Repositories
 {
@@ -53,6 +54,18 @@ namespace Data_Acess_Layer.Repositories
         public CourseEntity Get(int id)
         {
             return _dbContext.Courses.FirstOrDefault(x => x.CourseId.Equals(id));
+        }
+
+        // Get students by course id
+        public List<StudentEntity> GetStudentsByCourseId(int courseId)
+        {
+            var students = _dbContext.Courses
+                .Where(c => c.CourseId == courseId)
+                .SelectMany(c => c.StudentCourses)
+                .Select(sc => sc.Student)
+                .ToList();
+
+            return students;
         }
 
         public void Post(CourseEntity course)
