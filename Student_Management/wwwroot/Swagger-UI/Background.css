@@ -1,0 +1,20 @@
+﻿
+/* Import the custom font */
+@font-face {
+    font-family: 'Custom';
+    src: url('/Swagger-UI/Fonts/Product-Sans-Italic.ttf') format('truetype') ;
+    /* Add more formats if needed, e.g., format('woff2') */
+}
+
+body {
+    background-color: #FFFFF0;
+}
+
+/* Apply the custom font to Swagger UI */
+.swagger-ui * {
+    font-family: 'Custom'; /* Use the custom font */
+}
+
+.swagger-ui .topbar {
+    background-color: #3498db; /* Change background color to a blue shade */
+}

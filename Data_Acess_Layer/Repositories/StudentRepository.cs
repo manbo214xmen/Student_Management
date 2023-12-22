@@ -43,6 +43,7 @@ namespace Data_Acess_Layer.Repositories
 
         public IEnumerable<CourseEntity> GetEnrolledCoursesByStudentId(int studentId)
         {
+            //Eager loading:
             // Implement logic to fetch enrolled courses for a student
             //var student = _dbContext.Students
             //    .Include(s => s.StudentCourses)
@@ -51,6 +52,7 @@ namespace Data_Acess_Layer.Repositories
 
             //return student?.StudentCourses?.Select(sc => sc.Course);
 
+            //Lazy loading: advantageous when loading massive amount of students from database
             var student = _dbContext.Students
                 .Where(s => s.StudentId == studentId)
                 .SelectMany(s => s.StudentCourses)
