@@ -30,6 +30,14 @@ namespace Business_Logic_Layer.Services
             return _mapper.Map<List<GradeDTO>>(_gradeRepository.Get());
         }
 
+
+        public List<StudentDTO> GetStudentListByGradeId(int id)
+        {
+            _gradeValidation.ValidateGradeId(id);
+            return _mapper.Map<List<StudentDTO>>(_gradeRepository.GetStudentListByGradeId(id));
+        }
+
+
         //public List<StudentDTO> GetFilterStudent(string? name, string? gradeId, string? sortType, string? sortField, int pageNumber, int pageSize)
         //{
 
@@ -38,7 +46,8 @@ namespace Business_Logic_Layer.Services
         //}
 
         public GradeDTO Get(int id)
-        { 
+        {
+            _gradeValidation.ValidateGradeId(id);
             return _mapper.Map<GradeDTO>(_gradeRepository.Get(id));
         }
 

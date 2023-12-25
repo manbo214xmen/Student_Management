@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Data_Acess_Layer.Repositories
 {
@@ -34,6 +35,14 @@ namespace Data_Acess_Layer.Repositories
             return _dbContext.Grades.ToList();
         }
 
+        public List<StudentEntity> GetStudentListByGradeId(int id)
+        {
+            var grade = _dbContext.Grades
+                .Include(S => S.Students)
+                .FirstOrDefault(S => S.GradeId == id);
+      
+            return grade.Students.ToList();          
+        }
         public GradeEntity Get(int id)
         {
             return _dbContext.Grades.FirstOrDefault(x => x.GradeId.Equals(id));

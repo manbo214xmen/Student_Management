@@ -35,9 +35,34 @@ namespace Student_Management.Controllers
         /// Get a specific grade from database
         /// </summary>
         [HttpGet("{id}")]
-        public GradeDTO Get(int id)
+        public IActionResult Get(int id)
+        {           
+            try
+            {
+                return Ok(_gradeService.Get(id));
+
+            }
+            catch (ArgumentException e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Get a List Students from specific grade from database
+        /// </summary>
+        [HttpGet("GetListStudent/{id}")]
+        public IActionResult GetStudentList(int id)
         {
-            return _gradeService.Get(id);
+            try
+            {
+                return Ok(_gradeService.GetStudentListByGradeId(id));
+                
+            }
+            catch(ArgumentException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         /// <summary>

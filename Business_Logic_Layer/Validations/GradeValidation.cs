@@ -17,6 +17,14 @@ namespace Business_Logic_Layer.Validations
             _gradeRepository = gradeRepository; 
         }
 
+        public void ValidateGradeId(int id)
+        {
+            if (!_gradeRepository.Exists(id))
+            {
+                throw new ArgumentException("Invalid Grade Id. !!!");
+            }
+        }
+
         public void ValidateGrade(GradeDTO grade)
         {
             if(!_gradeRepository.IsGradeNameUnique(grade.GradeName))
