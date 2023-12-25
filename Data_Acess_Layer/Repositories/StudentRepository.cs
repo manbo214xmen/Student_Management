@@ -43,14 +43,18 @@ namespace Data_Acess_Layer.Repositories
 
         public IEnumerable<CourseEntity> GetEnrolledCoursesByStudentId(int studentId)
         {
-            // Implement logic to fetch enrolled courses for a student
-            //var student = _dbContext.Students
-            //    .Include(s => s.StudentCourses)
-            //    .ThenInclude(sc => sc.Course)
-            //    .FirstOrDefault(s => s.StudentId == studentId);
+            //Eager Loading
+           // Implement logic to fetch enrolled courses for a student
 
-            //return student?.StudentCourses?.Select(sc => sc.Course);
+           //var student = _dbContext.Students
+           //    .Include(s => s.StudentCourses)
+           //    .ThenInclude(sc => sc.Course)
+           //    .FirstOrDefault(s => s.StudentId == studentId);
 
+           // return student?.StudentCourses?.Select(sc => sc.Course);
+
+
+            //Lazy Loading
             var student = _dbContext.Students
                 .Where(s => s.StudentId == studentId)
                 .SelectMany(s => s.StudentCourses)
