@@ -17,7 +17,7 @@ namespace Business_Logic_Layer.Validations
             _courseRepository = courseRepository;
         }
 
-        public void ValidateCourse(CourseDTO course)
+        public void ValidateCourseName(CourseDTO course)
         {
              if(!_courseRepository.IsCourseNameUnique(course.CourseName))
             {

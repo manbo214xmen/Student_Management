@@ -41,7 +41,6 @@ namespace Student_Management.Controllers
             try
             {
                 return Ok(_gradeService.Get(id));
-
             }
             catch (ArgumentException e)
             {

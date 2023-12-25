@@ -31,7 +31,14 @@ namespace Student_Management.Controllers
         public IActionResult Get(int page = 1, int pageSize = 3, string filter = "")
         {
             var courses = _courseService.PagingAndFilteringCourses(page, pageSize, filter);
-            return Ok(courses);
+            if (courses.Any())
+            {
+                return Ok(courses);
+            }
+            else
+            {
+                return NotFound("Not found: No results match your search string !!!");
+            }
         }
 
         /// <summary>
@@ -40,8 +47,15 @@ namespace Student_Management.Controllers
         [HttpGet("byCourse/{courseId}")]
         public IActionResult GetStudentsByCourseId(int courseId)
         {
-            var students = _courseService.GetStudentsByCourseId(courseId);
-            return Ok(students);
+            try
+            {
+                var students = _courseService.GetStudentsByCourseId(courseId);
+                return Ok(students);
+            }
+            catch (Exception ex) 
+            {
+                return BadRequest(ex.Message); // Return a 400 Bad Request with the error message
+            }
         }
 
         //[HttpGet]
@@ -55,9 +69,17 @@ namespace Student_Management.Controllers
         /// Get a specific course from database
         /// </summary>
         [HttpGet("{id}")]
-        public CourseDTO Get(int id)
+        public IActionResult Get(int id)
         {
-            return _courseService.Get(id);
+            var course = _courseService.Get(id);
+            if (course == null)
+            { //Custom Http status code
+                return new ObjectResult("Invalid CourseId !!! Course not found.")
+                {
+                    StatusCode = 4044
+                };
+            }
+            return Ok(course);
         }
 
         /// <summary>

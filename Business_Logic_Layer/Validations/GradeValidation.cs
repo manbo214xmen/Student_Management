@@ -25,7 +25,7 @@ namespace Business_Logic_Layer.Validations
             }
         }
 
-        public void ValidateGrade(GradeDTO grade)
+        public void ValidateGradeName(GradeDTO grade)
         {
             if(!_gradeRepository.IsGradeNameUnique(grade.GradeName))
             {

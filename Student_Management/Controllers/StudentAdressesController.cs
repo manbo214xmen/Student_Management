@@ -35,9 +35,17 @@ namespace Student_Management.Controllers
         /// Get a specific student address from database
         /// </summary>
         [HttpGet("{id}")]
-        public StudentAddressDTO Get(int id)
+        public IActionResult Get(int id)
         {
-            return _studentAddressService.Get(id);
+            var studentAddress = _studentAddressService.Get(id);
+            if (studentAddress == null)
+            { //Custom Http status code
+                return new ObjectResult("Invalid StudentAddressId !!! Address not found.")
+                {
+                    StatusCode = 4042
+                };
+            }
+            return Ok(studentAddress);
 
         }
 
@@ -81,7 +89,7 @@ namespace Student_Management.Controllers
         /// Delete a specific student address from database
         /// </summary>
         [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
 
             if (_studentAddressService.Delete(id))

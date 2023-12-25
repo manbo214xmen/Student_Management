@@ -48,25 +48,25 @@ namespace Business_Logic_Layer.Services
 
         public List<StudentDTO> GetStudentsByCourseId(int courseId)
         {
+            _courseValidation.ValidateCourseId(courseId);
             var students = _courseRepository.GetStudentsByCourseId(courseId);
             return _mapper.Map<List<StudentDTO>>(students);
         }
 
         public CourseDTO Get(int id)
         {
-
-
             return _mapper.Map<CourseDTO>(_courseRepository.Get(id));
         }
 
         public void Post(CourseDTO course)
         {
-            _courseValidation.ValidateCourse(course);
+            _courseValidation.ValidateCourseName(course);
             _courseRepository.Post(_mapper.Map<CourseEntity>(course));
         }
         public bool Put(int id, CourseDTO course)
         {
-            _courseValidation.ValidateCourse(course);
+            _courseValidation.ValidateCourseId(id);
+            _courseValidation.ValidateCourseName(course);
             return _courseRepository.Put(id, _mapper.Map<CourseEntity>(course));
         }
         public bool Delete(int id)

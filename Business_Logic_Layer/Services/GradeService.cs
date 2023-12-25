@@ -53,13 +53,14 @@ namespace Business_Logic_Layer.Services
 
         public void Post(GradeDTO grade)
         {
-            _gradeValidation.ValidateGrade(grade);
+            _gradeValidation.ValidateGradeName(grade);
             _gradeRepository.Post(_mapper.Map<GradeEntity>(grade));
         }
 
         public bool Put(int id, GradeDTO grade)
         {
-            _gradeValidation.ValidateGrade(grade);
+            _gradeValidation.ValidateGradeId(id);
+            _gradeValidation.ValidateGradeName(grade);
             return _gradeRepository.Put(id, _mapper.Map<GradeEntity>(grade));
         }
 
