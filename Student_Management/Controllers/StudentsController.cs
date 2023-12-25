@@ -86,13 +86,20 @@ namespace Student_Management.Controllers
         //}
 
         /// <summary>
-        /// Get a specific student from database
+        /// Get a specific student from database 
         /// </summary>
         [HttpGet("{id}")]
-        public StudentDTO Get(int id)
+        public IActionResult Get(int id)
         {
-            return _studentService.Get(id);
-
+            var student = _studentService.Get(id);
+            if (student == null)
+            { //Custom Http status code
+                return new ObjectResult("Invalid StudentId !!! Student not found.")
+                {
+                    StatusCode = 4041
+                };
+            }
+            return Ok(student);
         }
 
         /// <summary>

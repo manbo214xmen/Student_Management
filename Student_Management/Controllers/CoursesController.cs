@@ -55,9 +55,17 @@ namespace Student_Management.Controllers
         /// Get a specific course from database
         /// </summary>
         [HttpGet("{id}")]
-        public CourseDTO Get(int id)
+        public IActionResult Get(int id)
         {
-            return _courseService.Get(id);
+            var course = _courseService.Get(id);
+            if (course == null)
+            { //Custom Http status code
+                return new ObjectResult("Invalid CourseId !!! Course not found.")
+                {
+                    StatusCode = 4044
+                };
+            }
+            return Ok(course);
         }
 
         /// <summary>
@@ -108,7 +116,10 @@ namespace Student_Management.Controllers
                 return NoContent();
             }
 
-            return BadRequest();
+            return new ObjectResult("Invalid CourseId !!! Course not found.")
+            { //Custom http status code
+                StatusCode = 4044
+            }; ;
 
         }
     }

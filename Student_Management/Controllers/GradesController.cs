@@ -40,7 +40,6 @@ namespace Student_Management.Controllers
             try
             {
                 return Ok(_gradeService.Get(id));
-
             }
             catch (ArgumentException e)
             {
@@ -113,7 +112,10 @@ namespace Student_Management.Controllers
                 return NoContent();
             }
 
-            return BadRequest();
+            return new ObjectResult("Invalid GradeId !!! Grade not found.")
+            { //Custom http status code
+                StatusCode = 4043
+            };
 
         }
     }
