@@ -61,6 +61,7 @@ namespace Data_Acess_Layer.Repositories
 
             return student;
         }
+
         public List<StudentEntity> Get()
         {
             return _dbContext.Students.ToList();

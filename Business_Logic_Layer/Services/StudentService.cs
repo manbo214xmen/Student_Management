@@ -52,6 +52,7 @@ namespace Business_Logic_Layer.Services
 
         public IEnumerable<CourseDTO> GetEnrolledCoursesByStudentId(int studentId)
         {
+            _studentValidation.ValidateStudentId(studentId);
             var enrolledCourses = _studentRepository.GetEnrolledCoursesByStudentId(studentId);
             return _mapper.Map<IEnumerable<CourseDTO>>(enrolledCourses);
         }
@@ -62,8 +63,6 @@ namespace Business_Logic_Layer.Services
             _courseValidation.ValidateCourseId(courseId);
             _studentRepository.AssignCourse(studentId, courseId);
         }
-
-       
 
         public StudentDTO Get(int id)
         {
@@ -79,8 +78,8 @@ namespace Business_Logic_Layer.Services
 
         public bool Put(int id, StudentDTO student)
         {
+            _studentValidation.ValidateStudentId(id);
             _studentValidation.ValidateStudent(student);
-
             return _studentRepository.Put(id, _mapper.Map<StudentEntity>(student));
         }
         public bool Delete(int id)

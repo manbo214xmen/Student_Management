@@ -35,7 +35,10 @@ namespace Student_Management.Controllers
 
             if (studentWithDetails == null)
             {
-                return NotFound();
+                return new ObjectResult("Invalid StudentId !!! Student not found.")
+                { //Custom Http status code
+                    StatusCode = 4041
+                };
             }
 
             return Ok(studentWithDetails);
@@ -47,8 +50,15 @@ namespace Student_Management.Controllers
         [HttpGet("{studentId}/courses")]
         public IActionResult GetEnrolledCourses(int studentId)
         {
-            var enrolledCourses = _studentService.GetEnrolledCoursesByStudentId(studentId);
-            return Ok(enrolledCourses);
+            try
+            {
+                var enrolledCourses = _studentService.GetEnrolledCoursesByStudentId(studentId);
+                return Ok(enrolledCourses);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error: {ex.Message}");
+            }
         }
 
         /// <summary>
@@ -75,7 +85,14 @@ namespace Student_Management.Controllers
         public IActionResult Get(int page = 1, int pageSize = 3, string filter = "")
         {
             var students = _studentService.PagingAndFilteringStudents(page, pageSize, filter);
-            return Ok(students);
+            if (students.Any())
+            {
+                return Ok(students);
+            }
+            else
+            {
+                return NotFound("Not found: No results match your search string !!!");
+            }
         }
 
         //[HttpGet]

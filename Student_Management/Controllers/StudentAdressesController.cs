@@ -89,7 +89,7 @@ namespace Student_Management.Controllers
         /// Delete a specific student address from database
         /// </summary>
         [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
 
             if (_studentAddressService.Delete(id))

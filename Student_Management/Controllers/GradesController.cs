@@ -112,10 +112,7 @@ namespace Student_Management.Controllers
                 return NoContent();
             }
 
-            return new ObjectResult("Invalid GradeId !!! Grade not found.")
-            { //Custom http status code
-                StatusCode = 4043
-            };
+            return BadRequest();
 
         }
     }
