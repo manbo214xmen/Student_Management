@@ -47,6 +47,9 @@ builder.Services.AddDbContext<StudentManagementContext>(options =>
    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddControllersWithViews().AddXmlSerializerFormatters();
+
+
 builder.Services.AddScoped<StudentRepository>();
 builder.Services.AddScoped<StudentValidation>();
 builder.Services.AddScoped<StudentService>();

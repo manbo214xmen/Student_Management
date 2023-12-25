@@ -7,6 +7,7 @@ namespace Student_Management.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Produces("application/xml")]
     public class GradesController : ControllerBase
     {
         GradeService _gradeService;
