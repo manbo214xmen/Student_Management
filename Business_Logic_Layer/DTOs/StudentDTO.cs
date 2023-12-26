@@ -23,7 +23,7 @@ namespace Business_Logic_Layer.DTOs
         [Required]
         public string StudentEmail { get; set; }
 
-        [StringLength(12, ErrorMessage = "Phone number should be less than 12 characters.")]
+        //[StringLength(12,MinimumLength = 12, ErrorMessage = "Phone number should be less than 12 characters.")]
         public string StudentPhone { get; set; }
 
         [Range(1, 150, ErrorMessage = "Age must be between 1 and 150.")]
