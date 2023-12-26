@@ -46,7 +46,6 @@ namespace Student_Management.Controllers
                 };
             }
             return Ok(studentAddress);
-
         }
 
         /// <summary>
