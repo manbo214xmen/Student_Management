@@ -67,7 +67,6 @@ namespace Business_Logic_Layer.Services
         public bool Delete(int id)
         {
             return _gradeRepository.Delete(id);
-
         }
     }
 }
