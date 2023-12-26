@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 using Data_Acess_Layer.Entities;
 
 namespace Business_Logic_Layer.DTOs
@@ -15,10 +18,12 @@ namespace Business_Logic_Layer.DTOs
         [NotNull]
         [JsonIgnore]
         public int StudentId { get; set; }
+
         [NotNull]
-        [Required]
+        [Required]   
         [StringLength(50, ErrorMessage = "Student name should be less than 50 characters.")]
         public string StudentName { get; set; }
+
         [NotNull]
         [Required]
         public string StudentEmail { get; set; }
