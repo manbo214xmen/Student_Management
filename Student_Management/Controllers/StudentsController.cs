@@ -22,15 +22,21 @@ namespace Student_Management.Controllers
         /// </summary>
         [HttpGet]
         [Produces("application/xml")]
-        public List<StudentDTO> Get()
+        public IActionResult Get()
         {
-            return _studentService.Get();
+            var students = _studentService.Get();
+
+            var listStudent = new ListStudentDTO
+            {
+                Students = students
+            };
+            return Ok(listStudent);
         }
 
         /// <summary>
         /// Get a specific student with all related information from database
         /// </summary>
-        [HttpGet("details/{id}")]
+        [HttpGet("details/{id}")]     
         public IActionResult GetStudentWithDetailsById(int id)
         {
             var studentWithDetails = _studentService.GetStudentWithDetailsById(id);
