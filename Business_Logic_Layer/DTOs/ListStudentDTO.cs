@@ -5,7 +5,7 @@ using Data_Acess_Layer.Entities;
 
 namespace Business_Logic_Layer
 {
-    [XmlRoot("ListStudent")]
+    [XmlRoot("Students")]
     public class ListStudentDTO
     {
         [XmlElement("Student")]
