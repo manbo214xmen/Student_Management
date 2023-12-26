@@ -136,7 +136,7 @@ namespace Student_Management.Controllers
             try
             {
                 _studentService.Post(student);
-                return Ok("Student created successfully");
+                return Created("Student created successfully", student);
             }
             catch (ArgumentException ex)
             {
@@ -157,7 +157,7 @@ namespace Student_Management.Controllers
             try
             {
                 _studentService.Put(id, student);
-                return Ok("Student updated successfully");
+                return NoContent();
             }
             catch (ArgumentException ex)
             {

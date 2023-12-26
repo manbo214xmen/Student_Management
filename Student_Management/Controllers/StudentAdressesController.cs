@@ -19,9 +19,10 @@ namespace Student_Management.Controllers
         /// Get all student addresses from database
         /// </summary>
         [HttpGet]
-        public List<StudentAddressDTO> Get()
+        public IActionResult Get()
         {
-            return _studentAddressService.Get();
+            var students = _studentAddressService.Get();
+            return Ok(students);
         }
 
         //[HttpGet]
@@ -57,7 +58,7 @@ namespace Student_Management.Controllers
             try
             {
                 _studentAddressService.Post(studentAddress);
-                return Ok("Student address created successfully");
+                return Created("Student address created successfully", studentAddress);
             }
             catch (ArgumentException ex)
             {
@@ -70,12 +71,12 @@ namespace Student_Management.Controllers
         /// Edit/Update a specific student address from database
         /// </summary>
         [HttpPut("{id}")]
-        public ActionResult Put(int id, StudentAddressDTO studentAddress)
+        public IActionResult Put(int id, StudentAddressDTO studentAddress)
         {
             try
             {
                 _studentAddressService.Put(id, studentAddress);
-                return Ok("Student adddress updated successfully");
+                return NoContent();
             }
             catch (ArgumentException ex)
             {

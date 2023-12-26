@@ -20,9 +20,10 @@ namespace Student_Management.Controllers
         /// Get all grades from database
         /// </summary>
         [HttpGet]
-        public List<GradeDTO> Get()
+        public IActionResult Get()
         {
-            return _gradeService.Get();
+            var grades = _gradeService.Get();
+            return Ok(grades);
         }
 
         //[HttpGet]
@@ -74,7 +75,7 @@ namespace Student_Management.Controllers
             try
             {
                 _gradeService.Post(grade);
-                return Ok("Grade created successfully");
+                return Created("Grade created successfully", grade);
             }
             catch (ArgumentException ex)
             {
@@ -92,7 +93,7 @@ namespace Student_Management.Controllers
             try
             {
                 _gradeService.Put(id, grade);
-                return Ok("Grade updated successfully");
+                return NoContent();
             }
             catch (ArgumentException ex)
             {

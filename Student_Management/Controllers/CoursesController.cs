@@ -19,9 +19,10 @@ namespace Student_Management.Controllers
         /// Get all courses from database
         /// </summary>
         [HttpGet]
-        public List<CourseDTO> Get()
+        public IActionResult Get()
         {
-            return _courseService.Get();
+            var courses = _courseService.Get();
+            return Ok(courses);
         }
 
         /// <summary>
@@ -91,7 +92,7 @@ namespace Student_Management.Controllers
             try
             {
                 _courseService.Post(course);
-                return Ok("Course created successfully");
+                return Created("Course created successfully", course);
             }
             catch (ArgumentException ex)
             {
@@ -109,7 +110,7 @@ namespace Student_Management.Controllers
             try
             {
                 _courseService.Put(id, course);
-                return Ok("Course updated successfully");
+                return NoContent();
             }
             catch (ArgumentException ex)
             {
