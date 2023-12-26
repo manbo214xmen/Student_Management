@@ -61,7 +61,7 @@ namespace Business_Logic_Layer.Validations
         {
             if (!IsValidPhoneNumber(phone))
             {
-                throw new ArgumentException("Invalid phone number format. Please use only numeric characters.");
+                throw new ArgumentException("Invalid phone number format.");
             }
             if (!_studentRepository.IsPhoneNumberUnique(phone))
             {
