@@ -7,6 +7,7 @@ namespace Student_Management.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class StudentsController : Controller
     {
 
@@ -20,6 +21,7 @@ namespace Student_Management.Controllers
         /// Get all students from database
         /// </summary>
         [HttpGet]
+        [Produces("application/xml")]
         public List<StudentDTO> Get()
         {
             return _studentService.Get();

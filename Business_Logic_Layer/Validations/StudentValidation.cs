@@ -79,7 +79,7 @@ namespace Business_Logic_Layer.Validations
         //To check if the input phone number contains only numeric characters
         private bool IsValidPhoneNumber(string phone)
         {
-            string phonePattern = @"^\d+$";
+            string phonePattern = @"(84|0[3|5|7|8|9])+([0-9]{8})\b";
             return Regex.IsMatch(phone, phonePattern);
         }
     }
